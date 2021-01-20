@@ -65,7 +65,7 @@ class Operation extends \ArrayObject {
             throw new \RuntimeException("function '{$operation}' not found or invalid function name or some unexplained error ¯\_(ツ)_/¯");
 //            throw new DomainException($exc->getTraceAsString());
         }
-        array_unshift($arr, Complex::new($result));
+        array_unshift($arr, Complex::new($result)->asArray());
         $this->exchangeArray($arr);
 
         return $this;
@@ -80,6 +80,9 @@ class Operation extends \ArrayObject {
      */
     public static function __callStatic(string $name, array $arguments) {
         $operation = implode('\\', [__NAMESPACE__, $name]);
+        if (!is_callable($operation)) {
+            throw new \ErrorException("function '{$name}' not found or invalid function name");
+        }
         return call_user_func_array($operation, $arguments);
     }
 

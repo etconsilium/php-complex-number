@@ -74,17 +74,17 @@ function angle(Complex $param) {
  * @access public
  */
 function sqrt(Complex $c1) {
-    $x = abs($c1->getReal());
-    $y = abs($c1->getIm());
-    if ($x == 0.0 && $y == 0) {
+    $x = \abs($c1->getReal());
+    $y = \abs($c1->getIm());
+    if ($x == 0 && $y == 0) {
         $r = $i = 0.0;
     } else {
         if ($x >= $y) {
             $t = $y / $x;
-            $w = sqrt($x) * sqrt(0.5 * (1.0 + sqrt(1.0 + $t * $t)));
+            $w = \sqrt($x) * \sqrt(0.5 * (1.0 + \sqrt(1.0 + $t * $t)));
         } else {
             $t = $x / $y;
-            $w = sqrt($y) * sqrt(0.5 * ($t + sqrt(1.0 + $t * $t)));
+            $w = \sqrt($y) * \sqrt(0.5 * ($t + \sqrt(1.0 + $t * $t)));
         }
 
         if ($c1->getReal() >= 0.0) {
@@ -107,11 +107,11 @@ function sqrt(Complex $c1) {
  */
 function sqrtReal($realnum) {
     if ($realnum >= 0) {
-        $r = sqrt($realnum);
+        $r = \sqrt($realnum);
         $i = 0.0;
     } else {
         $r = 0.0;
-        $i = sqrt(- $realnum);
+        $i = \sqrt(- $realnum);
     }
     return complex($r, $i);
 }
@@ -554,7 +554,7 @@ function asinh(Complex $c1) {
  */
 function acosh(Complex $c1) {
     $z = acos($c1);
-    return multIm($z, [-1, 1]($z->getIm() > 0));
+    return multIm($z, [-1, 1][($z->getIm() > 0)]);
 //    return Math_ComplexOp::multIm($z, (($z->getIm() > 0) ? 1.0 : -1.0));
 }
 
@@ -574,8 +574,7 @@ function atanh(Complex $c1) {
             return \complex(\atanh(1 / $r), (($a < 0) ? \M_PI_2 : -1 * \M_PI_2));
         }
     } else {
-        $z = multIm($c1, 1.0);
-        $z = \atan($z);
+        $z = atan(multIm($c1, 1.0));
         return multIm($z, -1.0);
     }
 }
