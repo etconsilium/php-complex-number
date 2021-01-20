@@ -1,0 +1,53 @@
+{
+    "name": "etconsilium/php-complex-number",
+    "description": "Classes that define complex numbers and their operations (PEAR::Math_Complex cover ft. PHP7)",
+    "keywords": [
+        "php_for_food",
+        "complex number operations",
+        "complex number",
+        "complex",
+        "hack",
+        "fix"
+    ],
+    "homepage": "https://github.com/etconsilium/php-complex-number",
+    "type": "package",
+    "license": "WTFPL",
+    "version": "1.9.23",
+    "powered": [
+        "http://uvviewsoft.com/cudatext/",
+        "https://pear.php.net/package/Math_Complex"
+    ],
+    "authors": [{
+        "name": "And They Have A Plan",
+        "email": "etconsilium@github.com"
+    }],
+    "minimum-stability": "beta",
+    "require": {
+        "php": ">5"
+    },
+    "require-dev": {
+        "ext-bcmath": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Math\\": "src/"
+        },
+        "files": ["src/Utils.php", "src/Complex/Utils.php"],
+        "exclude-from-classmap": [
+            "/example/**",
+            "/Tests/",
+            "/test/",
+            "/tests/",
+            "/pear/**"
+        ]
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "zip this * -x example*"
+        ],
+        "post-update-cmd": [
+            "zip this * -x example*"
+        ]
+    }
+
+}
