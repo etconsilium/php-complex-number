@@ -10,6 +10,8 @@
 
 namespace Math;
 
+use Math\Complex\Operation;
+
 /**
  * Complex: class to represent an manipulate complex numbers (z = a + b*i)
  *
@@ -64,6 +66,18 @@ class Complex extends \ArrayObject {
     }
 
     /**
+     * 
+     * @return string
+     */
+    public function __toString() {
+        return $this->asString('%.2G%+.2Gj');
+    }
+
+    public function __call($name, $arguments) {
+        return call_user_func_array([new Operation, $name], array_merge([$this],$arguments));
+    }
+
+    /**
      * Alias of Math\Complex::new($r, $i)
      * 
      * @return Math\Complex
@@ -94,14 +108,6 @@ class Complex extends \ArrayObject {
      */
     public static function createFromString($string = null) {
         return \call_user_func_array([__CLASS__, 'new']);
-    }
-
-    /**
-     * 
-     * @return string
-     */
-    public function __toString() {
-        return $this->asString('%.2G%+.2Gj');
     }
 
     /**
