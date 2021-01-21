@@ -658,10 +658,22 @@ function sub(Complex $c1, Complex $c2) {
  * @return \Math\Complex
  * @access public
  */
-function mult(Complex $c1, Complex $c2) {
+function mul(Complex $c1, Complex $c2) {
     $r = ($c1->getReal() * $c2->getReal()) - ($c1->getIm() * $c2->getIm());
     $i = ($c1->getReal() * $c2->getIm()) + ($c2->getReal() * $c1->getIm());
     return complex($r, $i);
+}
+
+/**
+ * Alias of mul()
+ *
+ * @param Math\Complex $c1
+ * @param Math\Complex $c2
+ * @return \Math\Complex
+ * @access public
+ */
+function mult(Complex $c1, Complex $c2) {
+    return mul($c1, $c2);
 }
 
 /**

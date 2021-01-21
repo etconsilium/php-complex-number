@@ -62,10 +62,10 @@ class Operation extends \ArrayObject {
             }
             $result = $operation->invokeArgs($args);
         } catch (\Exception $exc) {
-            throw new \RuntimeException("function '{$operation}' not found or invalid function name or some unexplained error ¯\_(ツ)_/¯");
+            throw new \RuntimeException("function '{$name}' not found or invalid function name or some unexplained error ¯\_(ツ)_/¯");
 //            throw new DomainException($exc->getTraceAsString());
         }
-        array_unshift($arr, Complex::new($result)->asArray());
+        $arr = array_merge([Complex::new($result)], $arr);
         $this->exchangeArray($arr);
 
         return $this;
