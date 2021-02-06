@@ -35,7 +35,7 @@ $b = new Complex(["real" => 1, "imaginary" => -M_PI_2]); //  constructor does no
 
 $op = new Operation($a);        //  operands' FILO inside the class
 //  Operation::add($a, $b);
-$c = $op->add($b)->fetch();     //  shift first Complex element from array and return
+$c = $op->add($b)->fetch();     //  first Complex element shift from heap's top and return
 print $c->asString() . PHP_EOL;
 
 print $op->mul($c,$a)() . PHP_EOL;  //  php double magic: __call alias fetch() & __toString
