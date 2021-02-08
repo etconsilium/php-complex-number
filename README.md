@@ -1,8 +1,8 @@
 # Complex numbers
 ##### Classes that define complex numbers and their operations, based on PEAR::Math_Complex
-
-### How to use
- #### Imperative Procedural Approach 
+---
+## How to use
+### Imperative Procedural Approach 
 ```php
 use Math\Complex;
 use Math\Complex\Operation;
@@ -12,20 +12,22 @@ $b = complex(1.0, -M_PI_2);
 
 echo "a = " . $a->toString() . PHP_EOL;
 echo "b = " . $b->toString() . PHP_EOL;
-$z = Operation::sqrt($a);
+$z = Complex\sqrt($a);          //  namespace
 echo "sqrt(a) = " . $z->toString() . PHP_EOL;
-$z = log10($b);
+$z = Operation::log10($b);      //  or static call
 echo "log10(a) = " . $z->toString() . PHP_EOL;
 
-$z = add($a, $b);
+$z = Operation::add($a, $b);
 echo "add(a, b) = " . $z->toString() . PHP_EOL;
-$z = Operation::div($a, $b);
+$z = Complex\div($a, $b);
 echo "div(a, b) = " . $z->toString() . PHP_EOL;
 ```
 @see also [using_example.php](./using_example.php)
 
 
- #### Object Oriented Approach
+
+
+### Object Oriented Approach
 ```php
 use Math\Complex;
 use Math\Complex\Operation;
